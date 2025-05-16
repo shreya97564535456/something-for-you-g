@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Birthday Surprise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: background 0.5s;
+        }
+        #container {
+            padding: 20px;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff66a3;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        img {
+            width: 200px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="page1">
+            <h2>Enter your name</h2>
+            <input type="text" id="nameInput" placeholder="Your Name">
+            <br><button onclick="goToPage2()">Next</button>
+        </div>
+
+        <div id="page2" class="hidden">
+            <h1 id="birthdayText"></h1>
+            <p>💗 "You are my safe zone" 💗</p>
+            <button onclick="goToPage3()">Next</button>
+        </div>
+
+        <div id="page3" class="hidden">
+            <h2>Make a Wish and Blow the Candle 🎂</h2>
+            <img src="https://i.imgur.com/9hR0S7L.gif" alt="Birthday Cake" onclick="goToPage4()" style="cursor:pointer;">
+            <p>(Click the candle to blow it!)</p>
+        </div>
+
+        <div id="page4" class="hidden">
+            <h2>Happy Birthday to the person I love most 💖</h2>
+            <p>
+                🥳 Tui sarajibon onek onek valo thak,<br>
+                ar seta amar sathei thak. 💞<br><br>
+                😤 Onno karor sathe besi hehe haha korte<br>
+                dekhte valo lage na amar!<br><br>
+                🎉 Jai hok, tor birthday ajk valo vabe kata.<br><br>
+                ☀️ Sasradin jokhon amra eksathe thakte parbo,<br>
+                tokhon ei din ta aro onek valo vabe katbe.<br><br>
+                😘 I love you soooo much 💋💖
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById("nameInput");
+        const birthdayText = document.getElementById("birthdayText");
+
+        function goToPage2() {
+            const name = nameInput.value.trim();
+            if (!name) {
+                alert("Please enter your name!");
+                return;
+            }
+            birthdayText.innerHTML = `Happy Birthday, ${name}! 🎉`;
+            showPage("page2");
+        }
+
+        function goToPage3() {
+            showPage("page3");
+        }
+
+        function goToPage4() {
+            showPage("page4");
+        }
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll("#container > div");
+            pages.forEach(page => page.classList.add("hidden"));
+            document.getElementById(pageId).classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
